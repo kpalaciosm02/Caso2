@@ -12,5 +12,14 @@ int main(){
     nodo1->printDataN();
     playerNode * nodo2 = new playerNode(2, "Fabian");
     nodo2->printDataN();
+
+    playerList * list = new playerList();
+    cout << "Quantity of players: " << list->getQuantity() << endl;
+    cout << "Lista vacía: " << list->isEmpty() << endl;
+    list->addPlayer(3,"Juan");
+    list->addPlayer(4,"María");
+    cout << "Quantity of players: " << list->getQuantity() << endl;
+    cout << "Lista vacía: " << list->isEmpty() << endl;
+
     return 0;
 }
