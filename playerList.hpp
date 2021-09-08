@@ -84,7 +84,7 @@ struct playerList{
         }
         else{
             playerNode * tmp = firstNode;
-            while (tmp->next != NULL){
+            while (tmp != NULL){
                 if (tmp->next !=NULL){
                     tmp = tmp->next;
                 }
@@ -94,6 +94,46 @@ struct playerList{
                 }
             }
             return false;
+        }
+    }
+    bool removePlayer(int pNumber){
+        if (firstNode == NULL){
+            return false;
+        }
+        else{
+            playerNode * tmp = firstNode;
+            if (firstNode->_player->id == pNumber){
+                firstNode = firstNode->next;
+                return true;
+            }
+            else{
+                playerNode * anterior = firstNode;
+                tmp = tmp->next;
+                while(tmp != NULL){
+                    if (tmp->_player->id == pNumber){
+                        anterior->next = tmp->next;
+                        return true;
+                    }
+                    else{
+                        anterior = anterior->next;
+                        tmp = tmp->next;
+                    }
+                }
+                return false;
+            }
+            
+        }
+    }
+    void listPlayers(){
+        if (firstNode == NULL){
+            cout << "FAIL: Tried to print empty list." << endl;
+        }
+        else{
+            playerNode * tmp = firstNode;
+            while(tmp != NULL){
+                tmp->printDataN();
+                tmp = tmp->next;
+            }
         }
     }
 };
