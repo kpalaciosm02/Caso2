@@ -124,6 +124,44 @@ struct playerList{
             
         }
     }
+    bool insertPlayer(int pNumber, string pName, int pPosition){
+        int length = 0;
+        playerNode * tmp = firstNode;
+        while(tmp != NULL){
+            length += 1;
+            tmp = tmp->next;
+        }
+        //cout << "Largo: " << length << endl;
+        playerNode * newNode = new playerNode(pNumber, pName);
+        if (firstNode == NULL){
+            firstNode = newNode;
+            return true;
+        }
+        else{
+            int actual = 0;
+            if (pPosition > length){
+                pPosition = length;
+                playerNode * tmp = firstNode;
+                while (actual < pPosition - 1){
+                    //tmp->printDataN();
+                    tmp = tmp->next;
+                    actual = actual + 1;
+                }
+                tmp->next = newNode;
+            }
+            else{
+                playerNode * tmp = firstNode;
+                while(actual != pPosition - 1){
+                    tmp = tmp->next;
+                    actual = actual + 1;
+                }
+                playerNode * nextNode = tmp->next;
+                newNode->next = nextNode;
+                tmp->next = newNode;
+            }
+        }
+    }
+
     void listPlayers(){
         if (firstNode == NULL){
             cout << "FAIL: Tried to print empty list." << endl;
