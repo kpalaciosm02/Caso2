@@ -10,7 +10,7 @@ int getMin(int * list, int size, int firstIndex){
             min = list[i];
         }
     }
-    for (int i = firstIndex; i < size; i++){
+    for (int i = firstIndex; i <= size; i++){
         if (list[i] == min)
             return i;
     }
@@ -42,17 +42,25 @@ int main(){
     /*int pValores[] = {1,2,3,4,5};
     int *ptr = pValores;*/
     //cout << ptr[0];
-    int lista[] = {3,1,4,7,2};
+    int lista[] = {3,1,4,2,7};
     int * ptr = lista;
     //sortBySelectionSort(ptr,5);
     /*int minIndex = getMin(ptr,5,0);
     ptr = updateList(ptr,minIndex,0);
     cout << ptr[0]<< ptr[1];*/
-    cout << getMin(lista, 5, 0) << endl;
-    cout << getMin(lista, 5, 1) << endl;
-    cout << getMin(lista, 5, 2) << endl;
-    cout << getMin(lista, 5, 3) << endl;
-    cout << getMin(lista, 5, 4) << endl;
+    /*cout << lista[getMin(lista, 5, 0)] << endl;
+    cout << lista[getMin(lista, 5, 1)] << endl;
+    cout << lista[getMin(lista, 5, 2)] << endl;
+    cout << lista[getMin(lista, 5, 3)] << endl;
+    cout << lista[getMin(lista, 5, 4)] << endl;*/
+    int minIndex = getMin(ptr,5,0);
+    ptr = updateList(ptr,minIndex,0);
+    int minIndex2 = getMin(ptr,5,1);
+    cout << ptr[minIndex2];
+    ptr = updateList(ptr,minIndex2,1);
+    for (int i = 0; i < 5; i++){
+        cout << ptr[i] << "->";
+    }
 
     return 0;
 }
