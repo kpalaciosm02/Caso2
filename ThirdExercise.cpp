@@ -9,15 +9,57 @@ void sortByInsertionSort(playerList * playerList){
     cout << firstNode->_player->name.compare(firstNode->next->_player->name) << endl;
 }
 
+bool checkSorted(playerList * playerList){
+    playerNode * tmp = playerList->firstNode;
+    while (tmp->next != NULL){
+        cout << tmp->_player->name.compare(tmp->next->_player->name) << endl;
+        if (tmp->_player->name.compare(tmp->next->_player->name) < 0)
+            return false;
+        tmp = tmp->next;
+    }
+    return true;
+}
+
+void swapNodes(playerList * playerList, int firstNodeToSwap){
+    playerNode * tmp = playerList->firstNode;
+    int actual = 0;
+    while (actual != firstNodeToSwap){
+        tmp = tmp->next;
+        actual++;
+    }
+    if (tmp ->next != NULL){
+        int idNext = tmp->next->_player->id;
+        string nameNext = tmp->next->_player->name;
+
+        tmp->next->_player->id = tmp->_player->id;
+        tmp->next->_player->name = tmp->_player->name;
+        
+        tmp->_player->id = idNext;
+        tmp->_player->name = nameNext;
+    } 
+}
+
+
+void sortByInsertionSort2(playerList * playerList){
+    int large = playerList->getQuantity();
+    while(checkSorted(playerList) != true){
+        for (int i = 0; i <large; i++){
+            swapNodes(playerList,i);
+        }
+    }
+    playerList->listPlayers();
+}
+
 int main(){
-    string str1 = "Hannah";
-    string str2 = "Pedro";
-    string str3 = "Helena";
-    cout << str2.compare(str1) << endl;
     playerList * list = new playerList();
     list->addPlayer(3,"Juan");
     list->addPlayer(4,"María");
-    list->addPlayer(6,"Hannah");
-    list->addPlayer(8,"Pedro");
-    sortByInsertionSort(list);
+    list->addPlayer(6,"Pedro");
+    list->addPlayer(8,"Hannah");
+    //sortByInsertionSort(list);
+    //cout << "Sorted list: " << checkSorted(list) << endl;
+    /*list->listPlayers();
+    swapNodes(list,3);
+    list->listPlayers();*/
+    //sortByInsertionSort2(list);
 }
