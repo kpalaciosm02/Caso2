@@ -1,48 +1,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-
-struct player{
-    //Structure representing a player
-    int id;
-    string name;
-    player(){
-        //Constructor method
-        id = 0;
-        name = "";
-    }
-    player(int _id, string _name){
-        //Constructor method
-        id = _id;
-        name = _name;
-    }
-    void printDataP(){
-        //Prints the player's data
-        cout << "ID: " << id << " Name: " << name << endl;
-    }
-};
-
-struct playerNode{
-    //Node from a linked list of strings
-    player * _player;
-    playerNode * next;
-
-    playerNode(){
-        //Constructor method
-        _player = new player();
-        next = NULL;
-    }
-
-    playerNode(int _id, string _name){
-        //Constructor method
-        _player = new player(_id, _name);
-        next = NULL;
-    }
-    void printDataN(){
-        //Prints the player's data
-        cout << "ID: " << _player->id << " Name: " << _player->name << endl;
-    }
-};
+#include "playerNode.hpp"
 
 struct playerList{
     //Linked list made of players
@@ -77,6 +36,7 @@ struct playerList{
         }
     }
     bool addPlayer(int pNumber, string pName){
+        //Adds a player at the end of the list
         playerNode * newNode = new playerNode(pNumber, pName);
         if (firstNode == NULL){
             firstNode = newNode;
@@ -97,6 +57,7 @@ struct playerList{
         }
     }
     bool removePlayer(int pNumber){
+        //Remove a player based on its number
         if (firstNode == NULL){
             return false;
         }
@@ -125,13 +86,13 @@ struct playerList{
         }
     }
     bool insertPlayer(int pNumber, string pName, int pPosition){
+        //Adds a player to a given position
         int length = 0;
         playerNode * tmp = firstNode;
         while(tmp != NULL){
             length += 1;
             tmp = tmp->next;
         }
-        //cout << "Largo: " << length << endl;
         playerNode * newNode = new playerNode(pNumber, pName);
         if (firstNode == NULL){
             firstNode = newNode;
@@ -143,7 +104,6 @@ struct playerList{
                 pPosition = length;
                 playerNode * tmp = firstNode;
                 while (actual < pPosition - 1){
-                    //tmp->printDataN();
                     tmp = tmp->next;
                     actual = actual + 1;
                 }
@@ -163,6 +123,7 @@ struct playerList{
     }
 
     void listPlayers(){
+        //Prints the list in order
         if (firstNode == NULL){
             cout << "FAIL: Tried to print empty list." << endl;
         }
