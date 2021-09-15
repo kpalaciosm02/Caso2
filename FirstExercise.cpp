@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int getMin(int * list, int size, int firstIndex){
+int getMin(float * list, int size, int firstIndex){
     //returns the index of the minimum number of a list
-    int min = list[firstIndex];
+    float min = list[firstIndex];
     for (int i = firstIndex; i < size; i++){
         if (list[i] < min)
             min = list[i];
@@ -15,16 +15,16 @@ int getMin(int * list, int size, int firstIndex){
     }
 }
 
-int * updateList(int * list, int firstIndex, int minNumberIndex){
+float * updateList(float * list, int firstIndex, int minNumberIndex){
     //changes the data between the first index and the index with the minimal number
-    int minNumber = list[minNumberIndex];
-    int firstIndexNumber = list[firstIndex];
+    float minNumber = list[minNumberIndex];
+    float firstIndexNumber = list[firstIndex];
     list[firstIndex] = minNumber;
     list[minNumberIndex] = firstIndexNumber;
     return list;
 }
 
-void sortBySelectionSort(int * pvaloresAOrdenar, int size){
+void sortBySelectionSort(float * pvaloresAOrdenar, int size){
     //calls the other functions to sort a list in a loop
     int index = 0;
     while (index < size - 1){
@@ -39,8 +39,11 @@ void sortBySelectionSort(int * pvaloresAOrdenar, int size){
 }
 
 int main(){
-    int lista[] = {24,42,58,2,104,17,99,13,8,145,59};
-    int * ptr = lista;
+    float lista[] = {24.2,42.1,58.7,2.1,104.5,17.6,99.5,13.6,8.8,145.9,59.0};
+    float lista2[6] = {9.9,8.8,7.7,6.6,5.5,4.4};
+    float * ptr = lista;
+    float * ptr2 = lista2;
     sortBySelectionSort(ptr,11);
+    sortBySelectionSort(ptr2,6);
     return 0;
 }
