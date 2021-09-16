@@ -83,6 +83,34 @@ struct doublePlayerList{
             
         }
     }
+    void insertPlayer(int pNumber, string pName, int pPosition){
+        int length = getQuantity();
+        if (pPosition >= getQuantity() - 1){
+            addPlayer(pNumber, pName);
+        }
+        else{
+            doublePlayerNode * newNode = new doublePlayerNode(pNumber, pName);
+            if (pPosition == 0){
+                newNode->previous = lastNode;
+                lastNode->next = newNode;
+                firstNode->previous = newNode;
+                newNode->next = firstNode;
+                firstNode = newNode;
+            }
+            else{
+                int actual = 0;
+                doublePlayerNode * tmp = firstNode;
+                while(actual != pPosition){
+                    tmp = tmp->next;
+                    actual += 1;
+                }
+                tmp->previous->next = newNode;
+                newNode->previous = tmp->previous;
+                tmp->previous = newNode;
+                newNode->next = tmp;
+            }
+        }
+    }
     void listPlayers(){
         if (firstNode == NULL){
             cout << "FAIL: Tried to print empty list." << endl;

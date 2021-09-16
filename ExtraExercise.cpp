@@ -9,11 +9,13 @@ int main(){
     //cout << "Lenght: " << list->getQuantity() << endl;
     //cout << list->firstNode->previous->next->_player->name << endl;
     list->listPlayers();
-    list->removePlayer(5);
-    //list->removePlayer(1);
-    list->removePlayer(3);
+    /*list->removePlayer(5);
+    list->removePlayer(1);
+    list->removePlayer(3);*/
     cout << endl << endl;
+    list->insertPlayer(7,"Carlos",9);
     list->listPlayers();
-    //list->addPlayer(6,"Diego");
+    list->addPlayer(6,"Diego");
+    cout << endl;
     list->listPlayers();
 }
