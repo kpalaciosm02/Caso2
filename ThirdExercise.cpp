@@ -59,7 +59,6 @@ bool checkNodes(playerList * playerList1, int firstNodeToCheck){
 void sortByInsertionSort(playerList * playerList1){
     //Calls the sorting functions until the full list is sorted
     int large = playerList1->getQuantity();
-    int index = 0;
     while(checkSorted(playerList1) != true){
             for (int i = 0; i < large; i++){
                 if (checkNodes(playerList1,i) == false){
@@ -68,7 +67,6 @@ void sortByInsertionSort(playerList * playerList1){
                 }
             }
     }
-
     playerList1->listPlayers();
 }
 
