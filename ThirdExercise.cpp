@@ -72,6 +72,8 @@ void sortByInsertionSort(playerList * playerList1){
 
 int main(){
     playerList * list = new playerList();
+    cout << "----Third Exercise----" << endl;
+    cout << "Creating an unsorted list: " << endl;
     list->addPlayer(3,"Hannah");
     list->addPlayer(4,"Pedro");
     list->addPlayer(6,"Juan");

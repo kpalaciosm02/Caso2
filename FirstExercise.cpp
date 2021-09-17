@@ -43,7 +43,17 @@ int main(){
     float lista2[6] = {9.9,8.8,7.7,6.6,5.5,4.4};
     float * ptr = lista;
     float * ptr2 = lista2;
+    cout << "----First exercise----" << endl;
+    for (int i = 0; i < 11; i++){
+        cout << lista[i] << "->";
+    }
+    cout << endl << "Sorting list: " <<endl;
     sortBySelectionSort(ptr,11);
+    cout << "List 2: " << endl;  
+    for (int i = 0; i < 6; i++){
+        cout << lista2[i] << "->";
+    }
+    cout << endl << "Sorting list: " <<endl;
     sortBySelectionSort(ptr2,6);
     return 0;
 }
